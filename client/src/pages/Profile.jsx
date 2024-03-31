@@ -13,6 +13,7 @@ import {
     signOutUserSuccess,
     signOutUserFailure
 } from '../redux/user/userSlice';
+import { Link } from 'react-router-dom';
 export default function Profile() {
     const { currentUser, loading, error } = useSelector((state) => state.user)
     const fileRef = useRef(null);
@@ -134,7 +135,9 @@ export default function Profile() {
                 <input type="email" placeholder='email' id='email' defaultValue={currentUser.email} className='border p-3 rounded-lg' onChange={handleChange} />
                 <input type="password" placeholder='password' id='password' className='border p-3 rounded-lg' onChange={handleChange} />
                 <button disabled={loading} className='bg-slate-700 text-white rounded-lg p-3 uppercase hover:opacity-95 disabled:opacity-80'>{loading ? 'Loading...' : 'Update'}</button>
-
+                <Link to='/create-listing' className='bg-green-700 text-white rounded-lg p-3 uppercase text-center hover:opacity-95 '>
+                    Create Listing
+                </Link>
             </form>
             <div className="flex justify-between mt-5">
                 <span onClick={handleDeleteUser} className='text-red-700 cursor-pointer'>Delete account</span>
